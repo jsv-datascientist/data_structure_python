@@ -192,7 +192,54 @@ def rotate_linkedlist(self, head:ListNode) -> ListNode:
     return newHead
 
 
+'''
+'''
+def partition_list(self, head : LinkedList, x:int): 
+     # Create two dummy nodes to start the less and greater lists
+    less_head = ListNode(0)
+    greater_head = ListNode(0)
 
+    # Pointers to build the new lists
+    less = less_head
+    greater = greater_head
+
+    # Traverse the original list and partition nodes
+    current = head
+    while current:
+        if current.val < x:
+            less.next = current
+            less = less.next
+        else:
+            greater.next = current
+            greater = greater.next
+        current = current.next
+
+    # Connect the less list to the greater list
+    greater.next = None  # End the greater list to avoid cycles
+    less.next = greater_head.next  # Connect the two lists
+
+    return less_head.next  # Return the head of the modified list
+'''
+# Helper function to print a linked list
+def print_list(head):
+    current = head
+    while current:
+        print(current.val, end=" -> ")
+        current = current.next
+    print("None")
+
+# Example usage
+head = ListNode(1)
+head.next = ListNode(4)
+head.next.next = ListNode(3)
+head.next.next.next = ListNode(2)
+head.next.next.next.next = ListNode(5)
+head.next.next.next.next.next = ListNode(2)
+
+x = 3
+partitioned_head = partition(head, x)
+print_list(partitioned_head)  # Output: 1 -> 2 -> 2 -> 4 -> 3 -> 5 -> None
+'''
 if __name__ == "__main__":
     llist = LinkedList()
 
