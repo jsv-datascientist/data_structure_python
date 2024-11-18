@@ -35,6 +35,36 @@ class Solution:
 
 
 
+    '''
+    Given a string s, find the length of the longest 
+    substring
+    without repeating characters.
+
+    Example 1:
+
+    Input: s = "abcabcbb"
+    Output: 3
+    Explanation: The answer is "abc", with the length of 3.
+    Example 2:
+
+    '''
+    def lengthOfLongestSubstring(self, s):
+        left = 0
+        max_length = 0
+        hashmap = {}
+
+        for right in range(len(s)):
+
+            value = s[right]
+            if value in hashmap:
+                left = max(left,hashmap[value] + 1)
+
+
+            hashmap[value] = right
+            max_length = max(max_length, right-left+1)
+        return max_length
+
+
 if __name__ == "__main__":
 
     print("Minimim Size SubArray Sum \n")
@@ -42,4 +72,8 @@ if __name__ == "__main__":
     nums = [2,3,1,2,4,3]
 
     solution = Solution()
-    print(solution.minSubArrayLen(target, nums))
+    print("Min sum array size is : ",solution.minSubArrayLen(target, nums) , end="\n")
+
+    s = "abcabcbb"
+
+    print("Longest subsequence is : ",solution.lengthOfLongestSubstring(s))

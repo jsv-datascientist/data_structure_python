@@ -115,6 +115,7 @@ def group_anagram(strs):
 
 
 
+
 if __name__ == "__main__":
     print("Anagram *********************", end="")
     strs = ["eat","tea","tan","ate","nat","bat"]
